@@ -1,0 +1,12 @@
+.{
+    .name = "zig-time",
+    .version = "0.1.0",
+    .minimum_zig_version = "0.12.0",
+    .paths = .{ "" },
+    .dependencies = .{
+        .zig_extras = .{
+            .url = "git+https://github.com/nektro/zig-extras#3dcc531937b58d787e183c25bad535c91bab1f7d",
+            .hash = "12203e72af2d783d3d68e29b16b971f48c793726854551c8d6ee3030acd4b50e036e"
+        },
+    },
+}
