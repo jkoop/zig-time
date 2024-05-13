@@ -209,8 +209,12 @@ pub const DateTime = struct {
     fn daysSinceEpoch(self: Self) u64 {
         var res: u64 = 0;
         res += self.days;
-        for (0..self.years - epoch_unix.years) |i| res += time.daysInYear(@intCast(i));
-        for (0..self.months) |i| res += self.daysInMonth(@intCast(i));
+        for (0..self.years - epoch_unix.years) |i| {
+            res += time.daysInYear(@intCast(i));
+        }
+        for (0..self.months) |i| {
+            res += self.daysInMonth(@intCast(i));
+        }
         return res;
     }
 
