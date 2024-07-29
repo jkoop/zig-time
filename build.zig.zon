@@ -1,12 +1,16 @@
 .{
-    .name = "zig-time",
+    .name = "zig_time",
     .version = "0.1.0",
-    .minimum_zig_version = "0.12.0",
-    .paths = .{ "" },
+    .minimum_zig_version = "0.13.0",
     .dependencies = .{
         .zig_extras = .{
-            .url = "git+https://github.com/nektro/zig-extras#3dcc531937b58d787e183c25bad535c91bab1f7d",
-            .hash = "12203e72af2d783d3d68e29b16b971f48c793726854551c8d6ee3030acd4b50e036e"
+            .url = "https://github.com/jkoop/zig-extras/archive/8e59b16cf18473c7a307fd1441a716bc2b2b802a.zip",
+            .hash = "12205d993e930dc44eafda891bf73f7acd55717b31da0c5647932298f043365d5447",
         },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
     },
 }
