@@ -215,7 +215,7 @@ pub const DateTime = struct {
         for (0..self.months) |i| {
             res += self.daysInMonth(@intCast(i));
         }
-        return res;
+        return res - 1; // Jan 1, 1970, should be zero, not one
     }
 
     /// fmt is based on https://momentjs.com/docs/#/displaying/format/
@@ -398,12 +398,9 @@ pub const DateTime = struct {
     }
 
     pub fn weekday(self: Self) WeekDay {
-        var i = self.daysSinceEpoch() % 7;
-        var result = WeekDay.Thu; // weekday of epoch_unix
-        while (i > 0) : (i -= 1) {
-            result = result.next();
-        }
-        return result;
+        var result = @intFromEnum(WeekDay.Thu) + self.daysSinceEpoch() % 7;
+        while (result >= 7) result -= 7;
+        return @enumFromInt(result);
     }
 };
 

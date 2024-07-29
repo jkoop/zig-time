@@ -158,3 +158,21 @@ test {
     t = t.addYears(1);
     try expectFmt(t, "YYYY-MM-DD hh:mm:ss A z", "2013-03-01 08:09:22 AM UTC");
 }
+
+// day of the week
+test {
+    // Sat Nov 05 2011 14:22:42 UTC
+    var t = time.DateTime.initUnix(1320502962);
+    try std.testing.expect(t.isLeapYear() == false);
+    try expectFmt(t, "ddd, DD MMM YYYY HH:mm:ss", "Sat, 05 Nov 2011 14:22:42");
+
+    // Wed Feb 29 2012 08:09:22 UTC
+    t = time.DateTime.initUnix(1330502962);
+    try std.testing.expect(t.isLeapYear() == true);
+    try expectFmt(t, "ddd, DD MMM YYYY HH:mm:ss", "Wed, 29 Feb 2012 08:09:22");
+
+    // Mon, Jul 29 2024 02:15:11 UTC
+    t = time.DateTime.initUnix(1722219311);
+    try std.testing.expect(t.isLeapYear() == true);
+    try expectFmt(t, "ddd, DD MMM YYYY HH:mm:ss", "Mon, 29 Jul 2024 02:15:11");
+}
